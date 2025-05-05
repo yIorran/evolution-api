@@ -1,10 +1,11 @@
 name: evolution-api
+
 services:
   - name: api
     image:
       registry: docker.io
       repository: atendai/evolution-api
-      tag: v2.1.1
+      tag: v2.2.3      # ou "latest"
     run_command: "npm run start:prod"
     envs:
       - key: AUTHENTICATION_API_KEY
@@ -13,9 +14,11 @@ services:
         value: ${GENERATED_SECRET}
       - key: WEBSOCKET_ENABLED
         value: "true"
+
 databases:
   - cluster_name: evo-db
     engine: PG
+
 caches:
   - cluster_name: evo-cache
     engine: VALKEY
